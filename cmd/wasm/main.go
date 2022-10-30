@@ -9,7 +9,11 @@ import (
 
 func main() {
 	fmt.Println(experiment.Greetings)
-	js.Global().Set("formatJSON", jsonWrapper())
+
+	exp := map[string]interface{}{
+		"formatJSON": jsonWrapper(),
+	}
+	js.Global().Set("wasmification", exp)
 
 	<-make(chan bool)
 }
